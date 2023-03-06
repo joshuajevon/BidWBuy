@@ -16,6 +16,13 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Phone Number -->
+        <div class="mt-4">
+            <x-input-label for="phoneNumber" :value="__('Phone Number')" />
+            <x-text-input id="phoneNumber" class="block mt-1 w-full" type="number" name="phoneNumber" :value="old('phoneNumber')" required autocomplete="phoneNumber" />
+            <x-input-error :messages="$errors->get('phoneNumber')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
@@ -37,6 +44,37 @@
                             name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+         <!-- Date of Birth -->
+         <div class="mt-4">
+            <x-input-label for="dob" :value="__('Date of Birth')" />
+            <x-text-input id="dob" class="block mt-1 w-full" type="date" name="dob" :value="old('dob')" required autocomplete="dob" />
+            <x-input-error :messages="$errors->get('dob')" class="mt-2" />
+        </div>
+
+        <!-- Gender -->
+        <div class="mt-4">
+            <x-input-label for="gender" :value="__('Gender')" />
+            <div class="">
+                <div class="male">
+                    <input id="male" class="block mt-1 w-full" type="radio" name="gender" value="male" @if(old('gender') == "male") checked @endif />
+                    <label for="male">Male</label>
+                </div>
+
+                <div class="female">
+                    <input id="female" class="block mt-1 w-full" type="radio" name="gender" value="female" @if(old('gender') == "female") checked @endif />
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <x-input-error :messages="$errors->get('gender')" class="mt-2" />
+        </div>
+
+        <!-- Address -->
+        <div class="mt-4">
+            <x-input-label for="address" :value="__('Address')" />
+            <x-text-input id="address" class="block mt-1 w-full" type="area" name="address" :value="old('address')" required autocomplete="address" />
+            <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
