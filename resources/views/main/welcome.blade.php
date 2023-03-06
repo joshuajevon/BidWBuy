@@ -46,7 +46,7 @@
                         <img src="{{asset('/storage/image/'.$product->image)}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h2 class="card-title">{{$product->name}}</h2>
-                            <p class="card-text">{{$product->description}}</p>
+                            <p class="card-text lead">{{$product->description}}</p>
                             <h3 class="card-title">{{$product->price}}</h3>
                             <h3 class="card-title">{{$product->quantity}}</h3>
                             <h4 class="card-title">{{$product->category_id}}</h4>
@@ -64,6 +64,16 @@
                     </div>
                 </div>
                 @endforeach
+                {{-- <div class="card" style="width: 18rem;">
+                        <img src="" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h2 class="card-title">Product 1</h2>
+                            <p class="card-text lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio iste voluptatibus, saepe magnam officiis culpa fuga quam modi quibusdam, esse quidem praesentium voluptate quisquam ducimus illum dolorem totam doloribus quae.</p>
+                            <h3 class="card-title">1000000000</h3>
+                            <h3 class="card-title">10</h3>
+                            <h4 class="card-title">watch</h4>
+                        </div>
+                    </div> --}}
             </div>
         </div>
     </div>
