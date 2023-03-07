@@ -1,6 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-dark py-4 fixed-top">
     <div class="container">
-        <a class="navbar-brand h1 mb-0 text-light fw-bold" href="#">BidWBuy</a>
+        <a class="navbar-brand h1 mb-0 text-light fw-bold d-flex align-items-center gap-2" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-watch"
+                viewBox="0 0 16 16">
+                <path d="M8.5 5a.5.5 0 0 0-1 0v2.5H6a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5V5z" />
+                <path
+                    d="M5.667 16C4.747 16 4 15.254 4 14.333v-1.86A5.985 5.985 0 0 1 2 8c0-1.777.772-3.374 2-4.472V1.667C4 .747 4.746 0 5.667 0h4.666C11.253 0 12 .746 12 1.667v1.86a5.99 5.99 0 0 1 1.918 3.48.502.502 0 0 1 .582.493v1a.5.5 0 0 1-.582.493A5.99 5.99 0 0 1 12 12.473v1.86c0 .92-.746 1.667-1.667 1.667H5.667zM13 8A5 5 0 1 0 3 8a5 5 0 0 0 10 0z" />
+            </svg>
+            BidWBuy</a>
         <button class="navbar-toggler text-light border-light" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -24,8 +31,8 @@
                     </svg>
                 </a>
                 <span class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light d-flex align-items-center gap-1" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-light d-flex align-items-center gap-1" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
