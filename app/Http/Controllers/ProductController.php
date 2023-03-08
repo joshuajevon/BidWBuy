@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function welcome(){
-        $products = Product::all();
+        $products = Product::latest()->take(3)->get();
         return view('main.welcome', compact('products'));
     }
 
@@ -29,7 +29,7 @@ class ProductController extends Controller
         // ]);
 
         $extension = $request->file('image')->getClientOriginalExtension();
-        $fileName = $request->Name.'_'.$request->Author.'.'.$extension;
+        $fileName = $request->name.$extension;
         $request->file('image')->storeAs('/public/image', $fileName);
 
         Product::create([
@@ -63,7 +63,7 @@ class ProductController extends Controller
         // ]);
 
         $extension = $request->file('image')->getClientOriginalExtension();
-        $fileName = $request->Name.'_'.$request->Author.'.'.$extension;
+        $fileName = $request->name.$extension;
         $request->file('image')->storeAs('/public/image', $fileName);
 
         Product::findOrFail($id)->update([

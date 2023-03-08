@@ -42,7 +42,9 @@
         <div class="container py-5 d-flex flex-column gap-5">
             <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Our Latest
                     Products</span></h1>
-            <a href="/create-product">Add Item</a>
+            @can('isAdmin')
+                <a href="/admin/create-product">Add Item</a>
+            @endcan
 
             <div class="row">
                 {{-- Show 3 produk terbaru --}}
@@ -50,7 +52,7 @@
                 <div class="col-lg-4 col-12 p-3">
                     <div
                         class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
-                        <img src="{{asset('/storage/image/'.$product->image)}}" class="col-lg-6 col-4 object-fit-contain"
+                        <img src="{{asset('/storage/image/'.$product->image)}}" class="col-lg-6 col-4 object-fit-contain" style="width: 20vw"
                             alt="product">
                         <div class="col-lg-12 col-8 d-flex flex-column gap-lg-2 gap-1 ps-lg-0 ps-3">
                             <h2 class="text-truncate">{{$product->name}}</h2>
@@ -144,7 +146,7 @@
 
             <div class="row">
                 {{-- Show 3 auction terbaru --}}
-                @foreach ($products as $product)
+                {{-- @foreach ($products as $product)
                 <div class="col-lg-4 col-12 p-3">
                     <div
                         class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
@@ -165,14 +167,13 @@
                             <form action="{{route('delete', $product->id)}}" method="POST">
                                 @csrf
                                 @method('delete')
-                                {{-- kalo put patch delete hrs tambahain kek atas --}}
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                             @endcan
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @endforeach --}}
 
                 <div class="col-lg-4 col-12 p-3">
                     <div
