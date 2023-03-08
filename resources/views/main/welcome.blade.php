@@ -56,7 +56,7 @@
                             <h2 class="text-truncate">{{$product->name}}</h2>
                             <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
                                 {{$product->description}}</p>
-                            <h5 class=""><span class="badge bg-secondary text-light">{{$product->category_id}}</span>
+                            <h5 class=""><span class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
                             </h5>
                             <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
                             <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
@@ -67,15 +67,14 @@
                             <form action="{{route('delete', $product->id)}}" method="POST">
                                 @csrf
                                 @method('delete')
-                                {{-- kalo put patch delete hrs tambahain kek atas --}}
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                             @endcan
                         </div>
                     </div>
                 </div>
+                {{-- {{ $products->links() }} --}}
                 @endforeach
-
                 <div class="col-lg-4 col-12 p-3">
                     <div
                         class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">

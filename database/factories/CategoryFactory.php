@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-        $CategoryName = $this->faker->unique()->word($nb=2,$asText = true);
+        $CategoryName = $this->faker->randomElement(['Standard','Authentic']);
         $slug = Str::slug($CategoryName,'-');
         return [
             'CategoryName' => $CategoryName,

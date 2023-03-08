@@ -50,6 +50,7 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
         ]);
 
+
         event(new Registered($user));
 
         Auth::login($user);
