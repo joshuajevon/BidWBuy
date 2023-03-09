@@ -20,11 +20,11 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <div class="navbar-nav ms-auto d-flex gap-2">
                 <a class="nav-link active border-bottom border-light fw-bold text-light" aria-current="page"
-                    href="#">Home</a>
-                    <a class="nav-link text-light" href="#">Auction</a>
+                    href="/">Home</a>
+                    <a class="nav-link text-light" href="/auction">Auction</a>
                     <a class="nav-link text-light" href="#">Buy Now</a>
                     @can('isAdmin')
-                        <a href="">Product</a>
+                        <a href="/admin/product">Dashboard</a>
                     @endcan
                     <a class="nav-link text-light" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -52,7 +52,7 @@
                         {{Auth::user()->name}}
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="/profile">Profile</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button>Logout</button>

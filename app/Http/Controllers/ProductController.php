@@ -13,9 +13,21 @@ class ProductController extends Controller
         return view('main.welcome', compact('products'));
     }
 
+    public function auctionPage(){
+        return view('main.auction');
+    }
+
+
+    // admin product / buynow
+
+    public function adminProductDashboard(){
+        $products = Product::all();
+        return view('admin.buynow.dashboard', compact('products'));
+    }
+
     public function createProduct(){
         $categories = Category::all();
-        return view('admin.createProduct', compact('categories'));
+        return view('admin.buynow.createProduct', compact('categories'));
     }
 
     public function storeProduct(Request $request){
@@ -49,7 +61,7 @@ class ProductController extends Controller
 
     public function edit($id){
         $product = Product::findOrFail($id);
-        return view('admin.editProduct', compact('product'));
+        return view('admin.buynow.editProduct', compact('product'));
     }
 
     public function update(Request $request, $id){
@@ -80,5 +92,10 @@ class ProductController extends Controller
     public function delete($id){
         Product::destroy($id);
         return redirect('/');
+    }
+
+    // admin auction
+    public function adminAuctionDashboard(){
+        return view('admin.auction.dashboard');
     }
 }
