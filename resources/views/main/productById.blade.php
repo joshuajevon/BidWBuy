@@ -5,23 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <title>BidWBuy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <x-navbar page="buynow" />
-
-    {{-- All Product --}}
-        <div class="container py-5 d-flex flex-column gap-5">
-            <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Our Latest
-                    Products</span></h1>
-            @can('isAdmin')
-                <a href="/admin/create-product">Add Item</a>
-            @endcan
-
             <div class="row">
-                @foreach ($products as $product)
                 <div class="col-lg-4 col-12 p-3">
                     <div
                         class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
@@ -35,21 +23,12 @@
                             </h5>
                             <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
                             <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
-                            <a href="{{route('productById', $product->id)}}">View</a>
-                            <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">Add To Cart</a>
-
-                            @can('isAdmin')
-                            <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
-                            <form action="{{route('delete', $product->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                            @endcan
+                            <a href="" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
                         </div>
                     </div>
                 </div>
-                {{-- {{ $products->links() }} --}}
-                @endforeach
+            </div>
+
+
 </body>
 </html>

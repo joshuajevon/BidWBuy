@@ -22,6 +22,11 @@ class ProductController extends Controller
         return view('main.buynow', compact('products'));
     }
 
+    public function productById($id){
+        $product = Product::findOrFail($id);
+        return view('main.productById', compact('product'));
+    }
+
     // cart
 
     public function cart(){

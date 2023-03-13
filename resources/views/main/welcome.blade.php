@@ -62,7 +62,7 @@
                             </h5>
                             <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
                             <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
-                            <a href="" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
+                            <a href="{{ route('productById', $product->id) }}" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
 
                             @can('isAdmin')
                             <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
@@ -77,7 +77,7 @@
                 </div>
                 {{-- {{ $products->links() }} --}}
                 @endforeach
-                <div class="col-lg-4 col-12 p-3">
+                {{-- <div class="col-lg-4 col-12 p-3">
                     <div
                         class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
                         <img src="./assets/home-page/product.png" class="col-lg-6 col-4 object-fit-contain" alt="product">
@@ -130,9 +130,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <a href="" class="btn btn-dark py-3 rounded text-center text-light fw-semibold">View
+            <a href="/buy-now" class="btn btn-dark py-3 rounded text-center text-light fw-semibold">View
                 All
                 Products</a>
         </div>

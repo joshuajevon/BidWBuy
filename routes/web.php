@@ -21,9 +21,11 @@ Route::get('/auction', [ProductController::class, 'auctionPage'])->name('auction
 
 Route::get('/buy-now', [ProductController::class, 'buyNowPage'])->name('buyNowPage');
 
+Route::get('/product-{id}', [ProductController::class, 'productById'])->name('productById');
+
 Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 
-Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add_to_cart');
+Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
 
 Route::patch('/update-cart', [ProductController::class, 'updateCart'])->name('updateCart');
 
