@@ -17,6 +17,60 @@ class ProductController extends Controller
         return view('main.auction');
     }
 
+    public function buyNowPage(){
+        $products = Product::all();
+        return view('main.buynow', compact('products'));
+    }
+
+    // cart
+
+    public function cart(){
+        return view('user.cart');
+    }
+
+    public function addToCart($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        }  else {
+            $cart[$id] = [
+                'name' => $product->name,
+                'image' => $product->image,
+                'price' => $product->price,
+                'quantity' => 1,
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product add to cart successfully!');
+    }
+
+    public function updateCart(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart successfully updated!');
+        }
+    }
+
+    public function deleteCart(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product successfully removed!');
+        }
+    }
+
 
     // admin product / buynow
 

@@ -30,14 +30,14 @@
                 <a class="nav-link active border-bottom border-light fw-bold text-light text-light"
                     href="/auction">Auction</a>
                 @else
-                <a class="nav-link text-light" href="/auction">Auction</a>
+                <a class="nav-link text-light" aria-current="page" href="/auction">Auction</a>
                 @endif
 
-                @if($page === "auction")
+                @if($page === "buynow")
                 <a class="nav-link active border-bottom border-light fw-bold text-light text-light" href="/auction">Buy
                     Now</a>
                 @else
-                <a class="nav-link text-light" href="/auction">Buy Now</a>
+                <a class="nav-link text-light" aria-current="page" href="/buy-now">Buy Now</a>
                 @endif
 
                 @can('isAdmin')
@@ -45,7 +45,7 @@
                 @endcan
 
                 @auth
-                <a class="nav-link text-light" href="#">
+                <a class="nav-link text-light" href="/cart">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         class="bi bi-cart" viewBox="0 0 16 16">
                         <path

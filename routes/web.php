@@ -19,6 +19,16 @@ Route::get('/',[ProductController::class, 'welcome'])->name('welcome');
 
 Route::get('/auction', [ProductController::class, 'auctionPage'])->name('auctionPage');
 
+Route::get('/buy-now', [ProductController::class, 'buyNowPage'])->name('buyNowPage');
+
+Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
+
+Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add_to_cart');
+
+Route::patch('/update-cart', [ProductController::class, 'updateCart'])->name('updateCart');
+
+Route::delete('/delete-cart', [ProductController::class, 'deleteCart'])->name('deleteCart');
+
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
         //product
