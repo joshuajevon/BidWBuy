@@ -36,7 +36,42 @@
                             <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
                             <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
                             <a href="{{route('productById', $product->id)}}">View</a>
-                            <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">Add To Cart</a>
+                            @guest
+
+                            <!-- Button trigger modal -->
+
+                                <a href="{{ route('register') }}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">
+                                    Add To Cart
+                                </a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Please Register / Login before Add The Product to Cart!
+                                        </div>
+                                        <div class="modal-footer">
+                                        <a href="{{ route('register') }}" class="btn btn-success py-lg-2 rounded text-center text-light fw-semibold">
+                                            Register
+                                        </a>
+                                        <a href="{{ route('login') }}" class="btn btn-primary py-lg-2 rounded text-center text-light fw-semibold">
+                                            Login
+                                        </a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                            @endguest
+
+                            @auth
+                                <a href="{{ route('addToCart', $product->id) }}" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">Add To Cart</a>
+                            @endauth
 
                             @can('isAdmin')
                             <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
@@ -51,5 +86,11 @@
                 </div>
                 {{-- {{ $products->links() }} --}}
                 @endforeach
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 </body>
 </html>
