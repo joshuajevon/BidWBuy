@@ -41,8 +41,9 @@
                 @endif
 
                 @can('isAdmin')
-                <a href="/admin/product">Dashboard</a>
+                <a class="nav-link text-light" aria-current="page" href="/admin/product">Dashboard</a>
                 @endcan
+
 
                 @auth
                 <a class="nav-link text-light" href="/cart">

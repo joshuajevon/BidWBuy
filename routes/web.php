@@ -31,6 +31,8 @@ Route::patch('/update-cart', [ProductController::class, 'updateCart'])->name('up
 
 Route::delete('/delete-cart', [ProductController::class, 'deleteCart'])->name('deleteCart');
 
+Route::get('/payment', [ProductController::class, 'payment'])->name('payment');
+
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
         //product

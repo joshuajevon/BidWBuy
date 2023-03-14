@@ -14,6 +14,16 @@
 <body>
     <x-navbar page="buynow" />
 
+    <br><br><br><br>
+    {{-- Search --}}
+    <form class="pt-5">
+            <input class="" id="search" name="search" type="search" placeholder="Type here to search...">
+            <button>
+                Search
+            </button>
+    </form>
+
+
     {{-- All Product --}}
     <div class="pt-5">
         <div class="pt-5">
@@ -39,7 +49,7 @@
                                 <h5 class=""><span
                                         class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
                                 </h5>
-                                <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
+                                <h3 class="fs-lg-3 fs-4">@currency ($product->price)</h3>
                                 <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
                                 <a href="{{route('productById', $product->id)}}">View</a>
                                 @guest
@@ -97,12 +107,15 @@
                             </div>
                         </div>
                     </div>
-                    {{-- {{ $products->links() }} --}}
                     @endforeach
                 </div>
+                {{ $products->links() }}
+
             </div>
         </div>
     </div>
+
+    <x-footer />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

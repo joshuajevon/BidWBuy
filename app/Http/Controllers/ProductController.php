@@ -17,8 +17,14 @@ class ProductController extends Controller
         return view('main.auction');
     }
 
-    public function buyNowPage(){
-        $products = Product::all();
+    public function buyNowPage(Request $request){
+
+        if($request->input('search')){
+            $products = Product::where('name','like','%' .request('search'). '%')->simplePaginate(6);
+        } else{
+            $products = Product::orderBy('created_at', 'desc')->simplePaginate(6);
+        }
+
         return view('main.buynow', compact('products'));
     }
 
@@ -74,6 +80,11 @@ class ProductController extends Controller
             }
             session()->flash('success', 'Product successfully removed!');
         }
+    }
+
+    // payment
+    public function payment(){
+        return view('user.payment');
     }
 
 

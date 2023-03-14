@@ -32,7 +32,7 @@
                                 @php $total += $details['price'] * $details['quantity'] @endphp
                             @endforeach
                             <div class="col-lg-12 col-sm-12 col-12 total-section text-right">
-                                <p>Total: <span class="text-info">Rp. {{ $total }}</span></p>
+                                <p>Total: <span class="text-info"> @currency( $total )</span></p>
                             </div>
                         </div>
                         @if(session('cart'))
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
                                         <p>{{ $details['name'] }}</p>
-                                        <span class="price text-info"> Rp.{{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                        <span class="price text-info"> @currency ( $details['price'] )</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
                                     </div>
                                 </div>
                             @endforeach
@@ -92,11 +92,11 @@
                                     </div>
                                 </div>
                             </td>
-                            <td data-th="Price">Rp.{{ $details['price'] }}</td>
+                            <td data-th="Price">@currency ($details['price'] )</td>
                             <td data-th="Quantity">
                                 <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity cart_update" min="1" />
                             </td>
-                            <td data-th="Subtotal" class="text-center">Rp.{{ $details['price'] * $details['quantity'] }}</td>
+                            <td data-th="Subtotal" class="text-center">@currency( $details['price'] * $details['quantity'] )</td>
                             <td class="actions" data-th="">
                                 <button class="btn btn-danger btn-sm cart_remove"><i class="fa fa-trash-o"></i> Delete</button>
                             </td>
@@ -106,12 +106,12 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="5" class="text-right"><h3><strong>Total Rp.{{ $total }}</strong></h3></td>
+                    <td colspan="5" class="text-right"><h3><strong>Total @currency( $total )</strong></h3></td>
                 </tr>
                 <tr>
                     <td colspan="5" class="text-right">
                         <a href="{{ url('/') }}" class="btn btn-danger"> <i class="fa fa-arrow-left"></i> Continue Shopping</a>
-                        <button class="btn btn-success"><i class="fa fa-money"></i> Checkout</button>
+                        <a href="{{url('/payment')}}" class="btn btn-success">Checkout</a>
                     </td>
                 </tr>
             </tfoot>
@@ -160,6 +160,8 @@
         });
 
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 </body>
 </html>
