@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('gender');
             $table->string('address');
             $table->boolean('isAdmin')->default(0);
+            // $table->unsignedBigInteger('product_id');
             $table->rememberToken();
             $table->timestamps();
         });
