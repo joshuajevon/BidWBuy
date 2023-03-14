@@ -18,7 +18,7 @@
             </svg>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <div class="navbar-nav ms-auto d-flex gap-2">
+            <div class="navbar-nav ms-auto d-flex gap-3">
                 @if($page === "home")
                 <a class="nav-link active border-bottom border-light fw-bold text-light" aria-current="page"
                     href="/">Home</a>
