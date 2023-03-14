@@ -44,11 +44,10 @@ class ProductFactory extends Factory
         'TAG Heuer']);
         $slug = Str::slug($product_name,'-');
         return [
-            // 'name' => $product_name,
             'name' => $product_name,
             'slug' => $slug,
             'description' => $this->faker->text(200),
-            'price' => $this->faker->numberBetween(100000,500000),
+            'price' => $this->faker->numberBetween(10000000,50000000),
             'quantity' => $this->faker->numberBetween(10,50),
             'image' => 'product-1.jpg',
             'category_id' => $this->faker->numberBetween(1,2)
