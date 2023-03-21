@@ -7,6 +7,28 @@
     <title>BidWBuy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+         <style>
+        .card-img-top {
+            height: 250px;
+            widows: 100%;
+        }
+        .text-currency{
+            font-size: 1.75rem;
+        }
+
+        @media (max-width: 991px) {
+            .card-img-top {
+                max-width: 250px;
+                width: 50%;
+                max-height: 250px;
+                height: auto;
+            }
+            .text-currency{
+                font-size: 1.25rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -50,19 +72,63 @@
                 {{-- Show 3 produk terbaru --}}
                 @foreach ($products as $product)
                 <div class="col-lg-4 col-12 p-3">
-                    <div
-                        class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
-                        <img src="{{asset('/storage/image/'.$product->image)}}" class="col-lg-6 col-4 object-fit-contain" style="width: 20vw"
-                            alt="product">
-                        <div class="col-lg-12 col-8 d-flex flex-column gap-lg-2 gap-1 ps-lg-0 ps-3">
-                            <h2 class="text-truncate">{{$product->name}}</h2>
-                            <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
+                <div
+                    class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-column flex-row gap-lg-4 gap-2">
+                    <h2 class="text-truncate d-inline-block d-lg-none w-100 text-center">Product 1</h2>
+                    <div class="d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-1 w-100">
+                        <img src="{{asset('/storage/image/'.$product->image)}}" class="object-fit-contain rounded card-img-top" alt="product">
+                        <div class="d-flex flex-column gap-lg-2 gap-1 ps-lg-0 ps-3 w-100">
+                            <h2 class="text-truncate d-lg-inline-block d-none">{{$product->name}}</h2>
+                            <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 120px">
                                 {{$product->description}}</p>
-                            <h5 class=""><span class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
+                            <h5><span
+                                    class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
                             </h5>
-                            <h3 class="fs-lg-3 fs-4">@currency ($product->price)</h3>
-                            <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
-                            <a href="{{ route('productById', $product->id) }}" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
+                            <h3 class="text-currency">@currency ($product->price)</h3>
+                            <a href="{{route('productById', $product->id)}}" class="btn btn-outline-dark fw-semibold p-lg-2 p-1">View</a>
+                            @guest
+
+                            <!-- Button trigger modal -->
+
+                            <a href="{{ route('register') }}" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                class="btn btn-dark text-light fw-semibold p-lg-2 p-1">
+                                Add To Cart
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Please Register / Login before Add The Product to Cart!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="{{ route('register') }}"
+                                                class="btn btn-success py-lg-2 rounded text-center text-light fw-semibold">
+                                                Register
+                                            </a>
+                                            <a href="{{ route('login') }}"
+                                                class="btn btn-primary py-lg-2 rounded text-center text-light fw-semibold">
+                                                Login
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @endguest
+
+                            @auth
+                            <a href="{{ route('addToCart', $product->id) }}"
+                                class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">Add To
+                                Cart</a>
+                            @endauth
 
                             @can('isAdmin')
                             <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
@@ -75,10 +141,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
                 @endforeach
+
+            </div>
             <a href="/buy-now" class="btn btn-dark py-3 rounded text-center text-light fw-semibold">View
-                All
-                Products</a>
+            All
+            Products</a>
         </div>
     </div>
 
