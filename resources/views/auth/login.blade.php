@@ -14,7 +14,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="container d-flex vh-100 w-100 justify-content-center align-items-center">
-        <form method="POST" action="{{ route('login') }}" class="border border-dark border-1 rounded p-5 col-lg-6 col-12">
+        <form method="POST" action="{{ route('login') }}" class="border border-dark border-1 rounded p-5 col-lg-7 col-12">
             @csrf
 
             <h1 class="text-center fw-bolder">Login</h1>
@@ -66,5 +66,7 @@
         </form>
 
     </div>
+
+    <x-footer />
 </body>
 </html>

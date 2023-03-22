@@ -60,7 +60,7 @@
     </div>
 
     {{-- Our Latest Product --}}
-    <div>
+    <div class="py-5">
         <div class="container py-5 d-flex flex-column gap-5">
             <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Our Latest
                     Products</span></h1>
@@ -84,7 +84,9 @@
                             <h5><span
                                     class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
                             </h5>
+
                             <h3 class="text-currency">@currency ($product->price)</h3>
+
                             <a href="{{route('productById', $product->id)}}" class="btn btn-outline-dark fw-semibold p-lg-2 p-1">View</a>
                             @guest
 
@@ -110,11 +112,11 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a href="{{ route('register') }}"
-                                                class="btn btn-success py-lg-2 rounded text-center text-light fw-semibold">
+                                                class="btn btn-success py-lg-2 rounded text-light fw-semibold">
                                                 Register
                                             </a>
                                             <a href="{{ route('login') }}"
-                                                class="btn btn-primary py-lg-2 rounded text-center text-light fw-semibold">
+                                                class="btn btn-primary py-lg-2 rounded text-light fw-semibold">
                                                 Login
                                             </a>
                                         </div>
@@ -126,7 +128,7 @@
 
                             @auth
                             <a href="{{ route('addToCart', $product->id) }}"
-                                class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">Add To
+                                class="btn btn-dark rounded text-light fw-semibold p-lg-2 p-1">Add To
                                 Cart</a>
                             @endauth
 
@@ -152,7 +154,7 @@
     </div>
 
     {{-- Live Auction --}}
-    <div class="bg-body-secondary">
+    <div class="bg-body-secondary py-5">
         <div class="container py-5 d-flex flex-column gap-5 ">
             <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Live Auctions</span></h1>
             <a href="/create-product">Add Item</a>
