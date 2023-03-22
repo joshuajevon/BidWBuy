@@ -28,13 +28,6 @@
                             <h2 class="text-truncate">{{$product->name}}</h2>
                             <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="max-height: 200px">
                                 {{$product->description}}
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae quis minima fugit dolores a dolorum libero explicabo architecto, doloribus ut maiores corrupti amet quae eaque vel quo sint numquam quidem.
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur provident vero quod aliquid. Ullam optio consectetur officia ut voluptate recusandae dolorem. Ipsam nemo repellat quidem necessitatibus et molestiae blanditiis quasi!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ad ipsum corporis sed in amet veniam tenetur blanditiis, illo nemo quos optio doloremque eius fuga labore laudantium reprehenderit maxime eos.
-
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti libero est ipsa quos hic nulla soluta esse quisquam itaque. Omnis consequuntur enim fugiat, esse at ratione illo nostrum? Deserunt, illum.
                             </p>
                             <h5 class=""><span class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
                             </h5>
