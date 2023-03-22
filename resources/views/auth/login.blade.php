@@ -46,7 +46,7 @@
                 </label>
             </div>
 
-            <x-primary-button class="btn btn-dark text-light mt-4 w-100">
+            <x-primary-button class="btn btn-dark text-light mt-4 w-100 p-2 fw-semibold">
                 {{ __('Log in') }}
             </x-primary-button>
 

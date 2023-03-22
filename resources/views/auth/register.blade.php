@@ -102,7 +102,7 @@
                             <x-input-error :messages="$errors->get('address')" class="mt-2 mb-0" />
                         </div>
 
-                        <x-primary-button class="w-100">
+                        <x-primary-button class="btn btn-dark text-light mt-4 w-100 p-2 fw-semibold">
                             {{ __('Register') }}
                         </x-primary-button>
 
