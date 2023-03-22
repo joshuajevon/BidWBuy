@@ -9,26 +9,86 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-            <div class="row">
-                <div class="col-lg-4 col-12 p-3">
+    <x-navbar page="buynow" />
+
+    <div class="pt-5">
+        <div class="py-5">
+            <div class="container py-5 d-flex flex-column gap-4">
+                    <a href="/buy-now" class="btn btn-dark d-flex justify-content-center align-items-center fw-semibold" style="width: fit-content;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+                        </svg>Go back
+                    </a>
+
                     <div
                         class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
                         <img src="{{asset('/storage/image/'.$product->image)}}" class="col-lg-6 col-4 object-fit-contain" style="width: 20vw"
                             alt="product">
                         <div class="col-lg-12 col-8 d-flex flex-column gap-lg-2 gap-1 ps-lg-0 ps-3">
                             <h2 class="text-truncate">{{$product->name}}</h2>
-                            <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
-                                {{$product->description}}</p>
+                            <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="max-height: 200px">
+                                {{$product->description}}
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae quis minima fugit dolores a dolorum libero explicabo architecto, doloribus ut maiores corrupti amet quae eaque vel quo sint numquam quidem.
+
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur provident vero quod aliquid. Ullam optio consectetur officia ut voluptate recusandae dolorem. Ipsam nemo repellat quidem necessitatibus et molestiae blanditiis quasi!
+
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ad ipsum corporis sed in amet veniam tenetur blanditiis, illo nemo quos optio doloremque eius fuga labore laudantium reprehenderit maxime eos.
+
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti libero est ipsa quos hic nulla soluta esse quisquam itaque. Omnis consequuntur enim fugiat, esse at ratione illo nostrum? Deserunt, illum.
+                            </p>
                             <h5 class=""><span class="badge bg-secondary text-light">{{$product->category->CategoryName}}</span>
                             </h5>
-                            <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
+                            <h3 class="text-currency">@currency ($product->price)</h3>
+
                             <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
-                            <a href="" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
+
+                            @guest
+                            {{-- Button trigger modal --}}
+                            <a href="{{ route('register') }}" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                class="btn btn-dark text-light fw-semibold p-3">
+                                Add To Cart
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Please Register / Login before Add The Product to Cart!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="{{ route('register') }}"
+                                                class="btn btn-success py-lg-2 rounded text-light fw-semibold">
+                                                Register
+                                            </a>
+                                            <a href="{{ route('login') }}"
+                                                class="btn btn-primary py-lg-2 rounded text-light fw-semibold">
+                                                Login
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @endguest
+
+                            @auth
+                            <a href="{{ route('addToCart', $product->id) }}"
+                                class="btn btn-dark rounded text-light fw-semibold p-3">Add To
+                                Cart</a>
+                            @endauth
                         </div>
                     </div>
-                </div>
             </div>
+        </div>
+    </div>
 
-
+    <x-footer />
 </body>
 </html>

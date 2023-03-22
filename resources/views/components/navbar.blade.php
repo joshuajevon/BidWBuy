@@ -34,7 +34,7 @@
                 @endif
 
                 @if($page === "buynow")
-                <a class="nav-link active border-bottom border-light fw-bold text-light text-light" href="/auction">Buy
+                <a class="nav-link active border-bottom border-light fw-bold text-light text-light" href="/buy-now">Buy
                     Now</a>
                 @else
                 <a class="nav-link text-light" aria-current="page" href="/buy-now">Buy Now</a>
@@ -73,7 +73,7 @@
 
                 @auth
                 <span class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light d-flex align-items-center gap-1" href="#"
+                    <a class="nav-link dropdown-toggle text-light d-flex align-items-center gap-1"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             class="bi bi-person-circle" viewBox="0 0 16 16">

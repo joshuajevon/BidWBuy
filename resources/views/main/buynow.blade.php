@@ -165,7 +165,7 @@
 
                             @auth
                             <a href="{{ route('addToCart', $product->id) }}"
-                                class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">Add To
+                                class="btn btn-dark text-light fw-semibold p-lg-2 p-1">Add To
                                 Cart</a>
                             @endauth
 
