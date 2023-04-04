@@ -139,14 +139,6 @@
                                 Cart</a>
                             @endauth
 
-                            @can('isAdmin')
-                            <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
-                            <form action="{{route('delete', $product->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                            @endcan
                         </div>
                     </div>
                 </div>
@@ -168,34 +160,7 @@
 
             <div class="row">
                 {{-- Show 3 auction terbaru --}}
-                {{-- @foreach ($products as $product)
-                <div class="col-lg-4 col-12 p-3">
-                    <div
-                        class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-0">
-                        <img src="{{asset('/storage/image/'.$product->image)}}" class="col-lg-6 col-4 object-fit-contain"
-                            alt="product">
-                        <div class="col-lg-12 col-8 d-flex flex-column gap-lg-2 gap-1 ps-lg-0 ps-3">
-                            <h2 class="text-truncate">{{$product->name}}</h2>
-                            <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
-                                {{$product->description}}</p>
-                            <h5 class=""><span class="badge bg-secondary text-light">{{$product->category_id}}</span>
-                            </h5>
-                            <h3 class="fs-lg-3 fs-4">Rp{{$product->price}}</h3>
-                            <h4 class="fs-lg-4 fs-5">Stock: {{$product->quantity}}</h4>
-                            <a href="" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
 
-                            @can('isAdmin')
-                            <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
-                            <form action="{{route('delete', $product->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                            @endcan
-                        </div>
-                    </div>
-                </div>
-                @endforeach --}}
 
                 <div class="col-lg-4 col-12 p-3">
                     <div

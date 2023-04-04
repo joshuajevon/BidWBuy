@@ -25,18 +25,30 @@
                         <thead>
                           <tr>
                             <th scope="col" class="p-2">Id</th>
-                            <th scope="col" class="p-2">Email</th>
-                            <th scope="col" class="p-2">Last</th>
-                            <th scope="col" class="p-2">Handle</th>
+                            <th scope="col" class="p-2">Product Name</th>
+                            <th scope="col" class="p-2">Price</th>
+                            <th scope="col" class="p-2">Quantity</th>
+                            <th scope="col" class="p-2">Category</th>
+                            <th scope="col" class="p-2">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
                             <tr>
                               <th scope="row" class="p-2">{{$product->id}}</th>
-                              <td class="p-2">{{$product->name}}</td>
-                              <td class="p-2">Otto</td>
-                              <td class="p-2">@mdo</td>
+                              <td class="p-2">{{ $product->name }}</td>
+                              <td class="p-2">{{ $product->price }}</td>
+                              <td class="p-2">{{ $product->quantity }}</td>
+                              <td class="p-2">{{ $product->category->CategoryName }}</td>
+                              <td>
+                                  <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
+                                  <form action="{{route('delete', $product->id)}}" method="POST">
+                                      @csrf
+                                      @method('delete')
+                                      <button class="btn btn-danger">Delete</button>
+                                  </form>
+                              </td>
+
                             </tr>
                             @endforeach
                         </tbody>

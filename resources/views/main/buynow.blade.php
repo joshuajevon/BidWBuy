@@ -68,47 +68,6 @@
         @endcan
 
         <div class="row">
-            {{-- <div class="col-lg-4 col-12 p-3">
-                <div
-                    class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-column flex-row gap-lg-4 gap-1">
-                    <h2 class="text-truncate d-inline-block d-lg-none w-100 text-center">Product 1</h2>
-                    <div class="d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-1 w-100">
-                        <img src="{{asset('/storage/image/product-1.jpg')}}" class="object-fit-contain rounded card-img-top"
-                            alt="product">
-                        <div class="d-flex flex-column justify-content-stretch gap-lg-2 gap-1 ps-lg-0 ps-3 w-100">
-                            <h2 class="text-truncate d-lg-inline-block d-none">Product 1 asdas asd asd asda sdsa dsa </h2>
-                            <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi veritatis, animi ipsa hic
-                                quasi officia, doloribus quas dolor nam iure nostrum perferendis dolore aspernatur tenetur
-                                impedit eos modi et? Suscipit.</p>
-                            <h5 class=""><span class="badge bg-secondary text-light">Category</span>
-                            </h5>
-                            <h3 class="fs-lg-3 fs-4">Price</h3>
-                            <h4 class="fs-lg-4 fs-5">Stock: 999</h4>
-                            <a href="">View</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-12 p-3">
-                <div
-                    class="border p-lg-4 p-3 rounded border-dark d-flex align-items-center flex-lg-column flex-row gap-lg-4 gap-1">
-                    <img src="{{asset('/storage/image/product-2.jpg')}}" class="object-fit-contain rounded card-img-top"
-                        alt="product">
-                    <div class="d-flex flex-column gap-lg-2 gap-1 ps-lg-0 ps-3 flex-fill">
-                        <h2 class="text-truncate">Product 2</h2>
-                        <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi veritatis, animi ipsa hic
-                            quasi officia, doloribus quas dolor nam iure nostrum perferendis dolore aspernatur tenetur
-                            impedit eos modi et? Suscipit.</p>
-                        <h5 class=""><span class="badge bg-secondary text-light">Category</span>
-                        </h5>
-                        <h3 class="fs-lg-3 fs-4">Price</h3>
-                        <h4 class="fs-lg-4 fs-5">Stock: 999</h4>
-                        <a href="">View</a>
-                    </div>
-                </div>
-            </div> --}}
             @foreach ($products as $product)
             <div class="col-lg-4 col-12 p-3">
                 <div
@@ -169,14 +128,7 @@
                                 Cart</a>
                             @endauth
 
-                            @can('isAdmin')
-                            <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
-                            <form action="{{route('delete', $product->id)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                            @endcan
+                            
                         </div>
                     </div>
                 </div>
