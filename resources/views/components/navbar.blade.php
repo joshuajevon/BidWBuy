@@ -91,6 +91,7 @@
                             @csrf
                             <button class="dropdown-item">Logout</button>
                         </form>
+                        <a class="dropdown-item" href="/user-dashboard">Dashboard</a>
                     </div>
                 </span>
                 @endauth

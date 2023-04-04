@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'dob',
         'gender',
-        'address'
+        'address',
     ];
 
     /**
@@ -46,7 +46,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function shops() {
+        return $this->hasMany(Shop::class);
     }
 }

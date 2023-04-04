@@ -82,12 +82,6 @@ class ProductController extends Controller
         }
     }
 
-    // payment
-    public function payment(){
-        return view('user.payment');
-    }
-
-
     // admin product / buynow
 
     public function adminProductDashboard(){

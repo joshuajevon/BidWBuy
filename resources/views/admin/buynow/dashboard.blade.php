@@ -18,6 +18,7 @@
                     <nav class="nav nav-pills nav-fill">
                         <a href="/admin/product/" class="nav-link bg-dark text-light fw-semibold">Buy Now</a>
                         <a href="/admin/auction/" class="nav-link fw-semibold text-dark">Auction</a>
+                        <a href="/admin/product/list-dashboard/" class="nav-link fw-semibold text-dark">List User</a>
                     </nav>
 
                     <table class="table table-sm table-dark table-hover table-striped text-center">

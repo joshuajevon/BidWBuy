@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,40 +8,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
-
 <body class="bg-body-secondary">
-    <x-navbar page="dashboard" />
+    <x-navbar page="dashboard"/>
 
     <div class="pt-5">
         <div class="pt-5">
             <div class="pt-5">
                 <div class="container min-vh-100 d-flex flex-column gap-4">
-                    <nav class="nav nav-pills nav-fill">
-                        <a href="/admin/product/" class="nav-link fw-semibold text-dark">Buy Now</a>
-                        <a href="/admin/auction/" class="nav-link bg-dark text-light fw-semibold">Auction</a>
-                        <a href="/admin/product/list-dashboard/" class="nav-link fw-semibold text-dark">List User</a>
-                    </nav>
-
                     <table class="table table-sm table-dark table-hover table-striped text-center">
                         <thead>
-                            <tr>
-                                <th scope="col" class="p-2">Id</th>
-                                <th scope="col" class="p-2">Email</th>
-                                <th scope="col" class="p-2">Last</th>
-                                <th scope="col" class="p-2">Handle</th>
-                            </tr>
+                          <tr>
+                              <th scope="col" class="p-2">Name</th>
+                              <th scope="col" class="p-2">Quantity</th>
+                              <th scope="col" class="p-2">Price</th>
+                              <th scope="col" class="p-2">Status</th>
+                          </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($products as $product)
+                            @foreach ($dashboards as $d)
+                            @if (Auth::user()->id === $d->user_id)
+
                             <tr>
-                                <th scope="row" class="p-2">{{$product->id}}</th>
-                                <td class="p-2">{{$product->name}}</td>
-                                <td class="p-2">Otto</td>
-                                <td class="p-2">@mdo</td>
+                              <td class="p-2">{{$d->product_name}}</td>
+                              <td class="p-2">{{$d->quantity}}</td>
+                              <td class="p-2"> @currency($d->price)</td>
+                              <td class="p-2"> Pending / Delivered </td>
                             </tr>
-                            @endforeach --}}
+                            @endif
+                            @endforeach
                         </tbody>
-                    </table>
+                      </table>
                 </div>
             </div>
         </div>
@@ -54,5 +49,4 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

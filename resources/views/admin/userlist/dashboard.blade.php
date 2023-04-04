@@ -19,28 +19,26 @@
                 <div class="container min-vh-100 d-flex flex-column gap-4">
                     <nav class="nav nav-pills nav-fill">
                         <a href="/admin/product/" class="nav-link fw-semibold text-dark">Buy Now</a>
-                        <a href="/admin/auction/" class="nav-link bg-dark text-light fw-semibold">Auction</a>
-                        <a href="/admin/product/list-dashboard/" class="nav-link fw-semibold text-dark">List User</a>
+                        <a href="/admin/auction/" class="nav-link fw-semibold text-dark">Auction</a>
+                        <a href="/admin/product/list-dashboard/" class="nav-link bg-dark text-dar fw-semibold text-light">List User</a>
                     </nav>
 
                     <table class="table table-sm table-dark table-hover table-striped text-center">
                         <thead>
                             <tr>
-                                <th scope="col" class="p-2">Id</th>
-                                <th scope="col" class="p-2">Email</th>
-                                <th scope="col" class="p-2">Last</th>
-                                <th scope="col" class="p-2">Handle</th>
+                                <th scope="col" class="p-2">User Name</th>
+                                <th scope="col" class="p-2">Product</th>
+                                <th scope="col" class="p-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($products as $product)
+                            @foreach ($users as $user)
                             <tr>
-                                <th scope="row" class="p-2">{{$product->id}}</th>
-                                <td class="p-2">{{$product->name}}</td>
-                                <td class="p-2">Otto</td>
-                                <td class="p-2">@mdo</td>
+                                <td class="p-2">{{$user->user->name}}</td>
+                                <td class="p-2">{{$user->product_name}}</td>
+                                <td class="p-2"></td>
                             </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
