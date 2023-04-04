@@ -42,7 +42,7 @@
             <div class="container pt-5">
                 <h5>Search products:</h5>
                 <form class="w-100 d-flex gap-2">
-                    <input class="w-100 p-2 rounded" id="search" name="search" type="search" 
+                    <input class="w-100 p-2 rounded" id="search" name="search" type="search"
                         placeholder="Type here to search...">
                     <button type="button"
                         class="btn btn-dark text-light d-flex justify-content-center align-items-center">
@@ -64,7 +64,7 @@
         <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Our Latest
                 Products</span></h1>
         @can('isAdmin')
-        <a href="/admin/create-product">Add Item</a>
+        <a href="/admin/product/create-product">Add Item</a>
         @endcan
 
         <div class="row">

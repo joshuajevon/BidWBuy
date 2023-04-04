@@ -57,7 +57,6 @@
                 </a>
                 @endauth
 
-
                 @guest
                 <a href="/register" class="btn btn-light">Register</a>
                 <a href="/login" class="btn btn-light">Login</a>
