@@ -40,14 +40,6 @@
                 <a class="nav-link text-light" aria-current="page" href="/buy-now">Buy Now</a>
                 @endif
 
-                @can('isAdmin')
-                @if($page === "dashboard")
-                <a class="nav-link active border-bottom border-light fw-bold text-light text-light" aria-current="page" href="/admin/product">Dashboard</a>
-                @else
-                <a class="nav-link text-light" aria-current="page" href="/admin/product">Dashboard</a>
-                @endif
-                @endcan
-
                 @auth
                 <a class="nav-link text-light" href="/cart">
                     <span class="position-relative">
@@ -87,11 +79,15 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/profile">Profile</a>
+                        @if(Auth::user()->isAdmin)
+                            <a class="dropdown-item" href="/admin/product">Dashboard</a>
+                        @else
+                            <a class="dropdown-item" href="/user-dashboard">Dashboard</a>
+                        @endif
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button class="dropdown-item">Logout</button>
                         </form>
-                        <a class="dropdown-item" href="/user-dashboard">Dashboard</a>
                     </div>
                 </span>
                 @endauth

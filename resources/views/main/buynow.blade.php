@@ -42,7 +42,7 @@
             <div class="container pt-5">
                 <h5>Search products:</h5>
                 <form class="w-100 d-flex gap-2">
-                    <input class="w-100 p-2 rounded" id="search" name="search" type="search"
+                    <input class="w-100 p-2 rounded" id="search" name="search" type="search" 
                         placeholder="Type here to search...">
                     <button type="button"
                         class="btn btn-dark text-light d-flex justify-content-center align-items-center">
