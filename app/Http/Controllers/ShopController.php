@@ -20,7 +20,8 @@ class ShopController extends Controller
             'quantity' => $request->quantity,
             'price' =>$request->price
         ]);
-        return redirect('/payment');
+        session()->forget('cart');
+        return redirect('user-dashboard/');
     }
 
     public function userDashboard(){

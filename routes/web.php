@@ -71,6 +71,8 @@ Route::middleware('isAdmin')->group(function(){
 
         Route::post('/store-shop', [ShopController::class, 'storeShop'])->name('storeShop');
 
+        Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
+
     });
 
 require __DIR__.'/auth.php';

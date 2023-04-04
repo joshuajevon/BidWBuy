@@ -97,8 +97,8 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
                                                         data-bs-dismiss="modal">No</button>
-                                                    {{-- <button type="button" class="btn btn-success">Yes</button> --}}
-                                                    <a type="button" href="{{url('/payment')}}"
+
+                                                    <a type="button" href="{{url('/payment  ')}}"
                                                         class="btn btn-success">Yes</a>
                                                 </div>
                                             </div>

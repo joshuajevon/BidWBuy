@@ -33,6 +33,11 @@ class ProductController extends Controller
         return view('main.productById', compact('product'));
     }
 
+    public function checkout(){
+        // session()->forget('cart');
+        return redirect('/payment');
+    }
+
     // cart
 
     public function cart(){
@@ -57,7 +62,7 @@ class ProductController extends Controller
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product add to cart successfully!');
+        return redirect('/cart')->with('success', 'Product add to cart successfully!');
     }
 
     public function updateCart(Request $request)
