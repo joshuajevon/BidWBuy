@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('product_name');
             $table->unsignedInteger('quantity');
             $table->unsignedBigInteger('price');
+            $table->string('address');
+            $table->set("payment_status", ["paid", "accepted", "rejected"])->default("paid");
             $table->timestamps();
         });
     }

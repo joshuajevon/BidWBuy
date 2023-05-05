@@ -40,6 +40,10 @@ Route::middleware('isAdmin')->group(function(){
             Route::get('/create-category', [CategoryController::class, 'createCategory'])->name('createCategory');
             Route::post('/store-category', [CategoryController::class, 'storeCategory'])->name('storeCategory');
             Route::get('/list-dashboard', [ShopController::class, 'listDashboard'])->name('listDashboard');
+
+            Route::get('/{status}', [ShopController::class, 'filterPayments']);
+            Route::post('/verify/{id}', [ShopController::class, 'verifyPayment'])->name('verifyPayment');
+            Route::post('/reject/{id}', [ShopController::class, 'rejectPayment'])->name('rejectPayment');
         });
 
         //auction

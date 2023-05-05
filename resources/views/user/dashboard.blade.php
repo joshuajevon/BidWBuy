@@ -32,7 +32,21 @@
                               <td class="p-2">{{$d->product_name}}</td>
                               <td class="p-2">{{$d->quantity}}</td>
                               <td class="p-2"> @currency($d->price)</td>
-                              <td class="p-2"> Pending / Delivered </td>
+                              <td class="p-2">
+                                @if (str_contains($d->payment_status, 'paid'))
+                                    <div>
+                                        Unverified
+                                    </div>
+                                    @elseif (str_contains($d->payment_status, 'accepted'))
+                                    <div>
+                                        Verified
+                                    </div>
+                                    @elseif (str_contains($d->payment_status, 'rejected'))
+                                    <div>
+                                        Rejected
+                                    </div>
+                                    @endif
+                            </td>
                             </tr>
                             @endif
                             @endforeach

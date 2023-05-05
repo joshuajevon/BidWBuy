@@ -28,15 +28,58 @@
                             <tr>
                                 <th scope="col" class="p-2">User Name</th>
                                 <th scope="col" class="p-2">Product</th>
+                                <th scope="col" class="p-2">Adress</th>
+                                <th scope="col" class="p-2">Status</th>
                                 <th scope="col" class="p-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <div>
+                                <a href="{{url('admin/product/list-dashboard')}}">
+                                    <button>All</button>
+                                </a>
+                                <a href="{{url('admin/product/paid ')}}">
+                                    <button>Unverified</button>
+                                </a>
+                                <a href="{{url('admin/product/accepted')}}">
+                                    <button>Verified</button>
+                                </a>
+                                <a href="{{url('admin/product/rejected')}}">
+                                    <button>Rejected</button>
+                                </a>
+                            </div>
+
                             @foreach ($users as $user)
                             <tr>
                                 <td class="p-2">{{$user->user->name}}</td>
                                 <td class="p-2">{{$user->product_name}}</td>
-                                <td class="p-2"></td>
+                                <td class="p-2">{{$user->address}}</td>
+                                <td class="p-2">
+                                    @if (str_contains($user->payment_status, 'paid'))
+                                    <div>
+                                        Unverified
+                                    </div>
+                                    @elseif (str_contains($user->payment_status, 'accepted'))
+                                    <div>
+                                        Verified
+                                    </div>
+                                    @elseif (str_contains($user->payment_status, 'rejected'))
+                                    <div>
+                                        Rejected
+                                    </div>
+                                    @endif
+                                </td>
+                                <td class="p-2">
+                                    <form action="{{ route('verifyPayment', $user->id) }}" method="POST">
+                                        @csrf
+                                        <button>Verify</button>
+                                    </form>
+
+                                    <form action="{{ route('rejectPayment', $user->id) }}" method="POST">
+                                        @csrf
+                                        <button>Reject</button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

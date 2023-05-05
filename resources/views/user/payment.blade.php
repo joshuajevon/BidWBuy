@@ -34,10 +34,15 @@
             <input readonly="true" type="number" value="{{ $details['price'] * $details['quantity']  }}" class="form-control" name="price"/>
         </div>
 
+        <div class="mb-3">
+            <label for="" class="form-label">Address</label>
+            <input type="test" class="form-control" name="address"/>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
         @endforeach
         @endif
-        
+
         <a href="/cart" class="btn btn-danger">Back</a>
 
     </form>

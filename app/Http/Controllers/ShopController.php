@@ -18,7 +18,8 @@ class ShopController extends Controller
             'user_id' => $user_id,
             'product_name' => $request->product_name,
             'quantity' => $request->quantity,
-            'price' =>$request->price
+            'price' =>$request->price,
+            'address' =>$request->address
         ]);
         session()->forget('cart');
         return redirect('user-dashboard/');
@@ -31,6 +32,25 @@ class ShopController extends Controller
 
     public function listDashboard(){
         $users = Shop::all();
+        return view('admin.userlist.dashboard', compact('users'));
+    }
+
+    public function verifyPayment($id){
+        Shop::where('id','=',$id)->update([
+            'payment_status' => 'accepted'
+        ]);
+        return redirect('/admin/product/list-dashboard');
+    }
+
+    public function rejectPayment($id){
+        Shop::where('id','=',$id)->update([
+            'payment_status' => 'rejected'
+        ]);
+        return redirect('/admin/product/list-dashboard');
+    }
+
+    public function filterPayments(Request $request, $status) {
+        $users = Shop::where('payment_status','=', $status)->paginate(10);
         return view('admin.userlist.dashboard', compact('users'));
     }
 }

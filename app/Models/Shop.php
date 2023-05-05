@@ -13,7 +13,9 @@ class Shop extends Model
         'user_id',
         'product_name',
         'quantity',
-        'price'
+        'price',
+        'address',
+        'payment_status'
     ];
 
     public function user() {
