@@ -4,17 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Auction;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function welcome(){
         $products = Product::latest()->take(3)->get();
-        return view('main.welcome', compact('products'));
+        $auctions = Auction::latest()->take(3)->get();
+        return view('main.welcome', compact('products','auctions'));
     }
 
-    public function auctionPage(){
-        return view('main.auction');
+    public function auctionPage(Request $request){
+        if($request->input('search')){
+            $auctions = Auction::where('name','like','%' .request('search'). '%')->simplePaginate(6);
+        } else{
+            $auctions = Auction::orderBy('created_at', 'desc')->simplePaginate(6);
+        }
+
+        return view('main.auction', compact('auctions'));
     }
 
     public function buyNowPage(Request $request){

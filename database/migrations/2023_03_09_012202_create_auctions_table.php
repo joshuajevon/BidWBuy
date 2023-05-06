@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->unsignedBigInteger('price');
+            $table->date('end_date');
+            $table->string('image');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\odel=Product>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Auction>
  */
-class ProductFactory extends Factory
+class AuctionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -42,15 +41,13 @@ class ProductFactory extends Factory
         'Breitling',
         'Bremont',
         'TAG Heuer']);
-        $slug = Str::slug($product_name,'-');
         return [
             'name' => $product_name,
-            'slug' => $slug,
             'description' => $this->faker->text(200),
             'price' => $this->faker->numberBetween(10000000,50000000),
-            'quantity' => $this->faker->numberBetween(10,50),
             'image' => 'product-1.jpg',
-            'category_id' => 1
+            'end_date' => $this->faker->dateTimeBetween('now', '+1 months')->format('Y-m-d'),
+            'category_id' => 2
         ];
     }
 }
