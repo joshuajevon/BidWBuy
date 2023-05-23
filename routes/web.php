@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\BidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/buy-now', [ProductController::class, 'buyNowPage'])->name('buyNowPa
 
 Route::get('/product-{id}', [ProductController::class, 'productById'])->name('productById');
 
+Route::get('/auction-{id}', [BidController::class, 'auctionById'])->name('auctionById');
 
 
 Route::middleware('isAdmin')->group(function(){
@@ -77,6 +79,7 @@ Route::middleware('isAdmin')->group(function(){
 
         Route::post('/checkout', [ProductController::class, 'checkout'])->name('checkout');
 
+        Route::post('/auctions/{id}/bids', [BidController::class, 'submitBid'])->name('submitBid');
     });
 
 require __DIR__.'/auth.php';

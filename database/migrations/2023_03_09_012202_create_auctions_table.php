@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->unsignedBigInteger('price');
+            $table->decimal('current_price', 10, 2)->default(0);
             $table->date('end_date');
             $table->string('image');
             $table->unsignedBigInteger('category_id');

@@ -44,7 +44,7 @@ class AuctionFactory extends Factory
         return [
             'name' => $product_name,
             'description' => $this->faker->text(200),
-            'price' => $this->faker->numberBetween(10000000,50000000),
+            'current_price' => $this->faker->numberBetween(10000000,50000000),
             'image' => 'product-1.jpg',
             'end_date' => $this->faker->dateTimeBetween('now', '+1 months')->format('Y-m-d'),
             'category_id' => 2

@@ -12,7 +12,7 @@ class Auction extends Model
     protected $fillable = [
         'name',
         'description',
-        'price',
+        'current_price',
         'image',
         'end_date',
         'category_id'
@@ -20,5 +20,9 @@ class Auction extends Model
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function bids(){
+        return $this->hasMany(Bid::class);
     }
 }

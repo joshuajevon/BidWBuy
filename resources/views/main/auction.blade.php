@@ -78,56 +78,14 @@
                             <h5><span
                                     class="badge bg-secondary text-light">{{$auction->category->CategoryName}}</span>
                             </h5>
-                            <h3 class="text-currency">@currency ($auction->price)</h3>
-                            <h4 class="fs-lg-4 fs-5">Bids: 5</h4>
+                            <h3 class="text-currency">@currency ($auction->current_price)</h3>
+                            {{-- <h4 class="fs-lg-4 fs-5">Bids: 5</h4> --}}
 
                             <h4 class="fs-lg-4 fs-5">Ends in: </h4>
                             <h4 class="fs-lg-4 fs-5" class="countdown" id="countdown-{{ $auction->id }}"></h4>
-                            <a href="" class="btn btn-outline-dark fw-semibold p-lg-2 p-1">View</a>
-                            @guest
+                            <a href="{{ route('auctionById', $auction->id) }}" id="bid" class="btn btn-dark fw-semibold p-lg-2 p-1">Bid</a>
 
-                            <!-- Button trigger modal -->
 
-                            <a href="{{ route('register') }}" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                class="btn btn-dark text-light fw-semibold p-lg-2 p-1">
-                                Add To Cart
-                            </a>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Please Register / Login before Add The auction to Cart!
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="{{ route('register') }}"
-                                                class="btn btn-success py-lg-2 rounded text-center text-light fw-semibold">
-                                                Register
-                                            </a>
-                                            <a href="{{ route('login') }}"
-                                                class="btn btn-primary py-lg-2 rounded text-center text-light fw-semibold">
-                                                Login
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @endguest
-
-                            @auth
-                            <a href="{{ route('addToCart', $auction->id) }}"
-                                id="addToCart-{{ $auction->id }}"
-                                class="btn btn-dark rounded text-light fw-semibold p-lg-2 p-1">Add To
-                                Cart</a>
-                            @endauth
 
 
                         </div>
@@ -142,7 +100,9 @@
 
     <x-footer />
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
     <script>
         @foreach($auctions as $auction)
         // Set the date and time of the event for this product
@@ -171,7 +131,8 @@
             if (distance < 0) {
                 clearInterval(x_{{ $auction->id }});
                 document.getElementById("countdown-{{ $auction->id }}").innerHTML = "EXPIRED";
-                document.getElementById("addToCart-{{ $auction->id }}").innerHTML = "EXPIRED";
+                document.getElementById("bid").innerHTML == "EXPIRED"
+                document.getElementById("bid").disabled = true;
             }
         }, 1000);
     @endforeach
