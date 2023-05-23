@@ -180,57 +180,14 @@
                             <p class="lead d-lg-block d-none overflow-scroll overflow-x-hidden" style="height: 150px">
                                {{ $auction->description }}</p>
                             <h5 class=""><span class="badge bg-secondary text-light"> {{ $auction->category->CategoryName }}</span></h5>
-                            <h3 class="fs-lg-3 fs-4"> @currency ($auction->price) </h3>
-                            <h4 class="fs-lg-4 fs-5">Bids: 5</h4>
+                            <h3 class="fs-lg-3 fs-4"> @currency ($auction->current_price) </h3>
+                            {{-- <h4 class="fs-lg-4 fs-5">Bids: 5</h4> --}}
 
                             <h4 class="fs-lg-4 fs-5">Ends in: </h4>
                             <h4 class="fs-lg-4 fs-5" class="countdown" id="countdown-{{ $auction->id }}"></h4>
 
-                            <a href="" class="btn btn-dark py-lg-3 rounded text-center text-light fw-semibold">View</a>
-                            @guest
 
-                            <!-- Button trigger modal -->
-
-                            <a href="{{ route('register') }}" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                class="btn btn-outline-dark fw-semibold p-lg-2 p-1">
-                                Add To Cart
-                            </a>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Please Register / Login before Add The Product to Cart!
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a href="{{ route('register') }}"
-                                                class="btn btn-success py-lg-2 rounded text-light fw-semibold">
-                                                Register
-                                            </a>
-                                            <a href="{{ route('login') }}"
-                                                class="btn btn-primary py-lg-2 rounded text-light fw-semibold">
-                                                Login
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @endguest
-
-                            @auth
-                            <a href="{{ route('addToCart', $auction->id) }}"
-                                id="addToCart-{{ $auction->id }}"
-                                class="btn btn-dark rounded text-light fw-semibold p-lg-2 p-1">Add To
-                                Cart</a>
-                            @endauth
+                            <a href="{{ route('auctionById', $auction->id) }}" id="bid" class="btn btn-dark fw-semibold p-lg-2 p-1">Bid</a>
                         </div>
                     </div>
                 </div>
