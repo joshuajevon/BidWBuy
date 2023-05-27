@@ -18,7 +18,7 @@
                     <nav class="nav nav-pills nav-fill">
                         <a href="/admin/product/" class="nav-link bg-dark text-light fw-semibold">Buy Now</a>
                         <a href="/admin/auction/" class="nav-link fw-semibold text-dark">Auction</a>
-                        <a href="/admin/product/list-dashboard/" class="nav-link fw-semibold text-dark">List User</a>
+                        <a href="/admin/product/list-dashboard/" class="nav-link fw-semibold text-dark">Payment</a>
                     </nav>
 
                     <table class="table table-sm table-dark table-hover table-striped text-center">
@@ -40,9 +40,9 @@
                               <td class="p-2">{{ $product->price }}</td>
                               <td class="p-2">{{ $product->quantity }}</td>
                               <td class="p-2">{{ $product->category->CategoryName }}</td>
-                              <td>
+                              <td class="p-2 d-flex justify-content-center gap-2">
                                   <a href="{{route('edit', $product->id)}}" class="btn btn-success">Edit</a>
-                                  <form action="{{route('delete', $product->id)}}" method="POST">
+                                  <form action="{{route('delete', $product->id)}}" method="POST" class="d-inline">
                                       @csrf
                                       @method('delete')
                                       <button class="btn btn-danger">Delete</button>

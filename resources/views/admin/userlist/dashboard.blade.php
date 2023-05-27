@@ -20,7 +20,7 @@
                     <nav class="nav nav-pills nav-fill">
                         <a href="/admin/product/" class="nav-link fw-semibold text-dark">Buy Now</a>
                         <a href="/admin/auction/" class="nav-link fw-semibold text-dark">Auction</a>
-                        <a href="/admin/product/list-dashboard/" class="nav-link bg-dark text-dar fw-semibold text-light">List User</a>
+                        <a href="/admin/product/list-dashboard/" class="nav-link bg-dark text-dar fw-semibold text-light">Payment</a>
                     </nav>
 
                     <table class="table table-sm table-dark table-hover table-striped text-center">
@@ -28,24 +28,24 @@
                             <tr>
                                 <th scope="col" class="p-2">User Name</th>
                                 <th scope="col" class="p-2">Product</th>
-                                <th scope="col" class="p-2">Adress</th>
+                                <th scope="col" class="p-2">Address</th>
                                 <th scope="col" class="p-2">Status</th>
                                 <th scope="col" class="p-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <div>
-                                <a href="{{url('admin/product/list-dashboard')}}">
-                                    <button>All</button>
+                                <a class="btn btn-light" href="{{url('admin/product/list-dashboard')}}">
+                                    All
                                 </a>
-                                <a href="{{url('admin/product/paid ')}}">
-                                    <button>Unverified</button>
+                                <a class="btn btn-light" href="{{url('admin/product/paid ')}}">
+                                    Unverified
                                 </a>
-                                <a href="{{url('admin/product/accepted')}}">
-                                    <button>Verified</button>
+                                <a class="btn btn-light" href="{{url('admin/product/accepted')}}">
+                                    Verified
                                 </a>
-                                <a href="{{url('admin/product/rejected')}}">
-                                    <button>Rejected</button>
+                                <a class="btn btn-light" href="{{url('admin/product/rejected')}}">
+                                    Rejected
                                 </a>
                             </div>
 
@@ -70,14 +70,14 @@
                                     @endif
                                 </td>
                                 <td class="p-2">
-                                    <form action="{{ route('verifyPayment', $user->id) }}" method="POST">
+                                    <form action="{{ route('verifyPayment', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
-                                        <button>Verify</button>
+                                        <button class="btn btn-success">Verify</button>
                                     </form>
 
-                                    <form action="{{ route('rejectPayment', $user->id) }}" method="POST">
+                                    <form action="{{ route('rejectPayment', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
-                                        <button>Reject</button>
+                                        <button class="btn btn-danger">Reject</button>
                                     </form>
                                 </td>
                             </tr>
