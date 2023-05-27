@@ -90,9 +90,6 @@
                                                         value="{{ $details['price'] * $details['quantity'] }}"
                                                         class="form-control" name="price" />
 
-                                                    <h1 class="display-6 fw-bolder">Address</h1>
-                                                    <input type="text" class="form-control" name="address" />
-
                                                     <h1 class="display-6 fw-bolder">Choose Payment Method</h1>
                                                     <div
                                                         class="form-check d-flex justify-content-left align-items-left gap-4">

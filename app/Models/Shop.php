@@ -14,7 +14,6 @@ class Shop extends Model
         'product_name',
         'quantity',
         'price',
-        'address',
         'payment'
     ];
 

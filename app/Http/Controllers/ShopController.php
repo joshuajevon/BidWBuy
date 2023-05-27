@@ -19,7 +19,6 @@ class ShopController extends Controller
             'product_name' => $request->product_name,
             'quantity' => $request->quantity,
             'price' =>$request->price,
-            'address' =>$request->address,
             'payment' =>$request->payment
         ]);
         session()->forget('cart');
