@@ -11,13 +11,13 @@
 </head>
 
 <body>
-    <x-navbar page="create-product" />
+    <x-navbar page="create-auction" />
 
     <div class="py-5">
         <div class="py-5">
             <div class="container py-5">
-                <h1 class="text-center">Create Product</h1>
-                <form action="{{ route('storeProduct') }}" method="POST" enctype="multipart/form-data">
+                <h1 class="text-center">Create Auction</h1>
+                <form action="{{ route('storeAuction') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="exampleInputName" class="form-label">Name</label>
@@ -27,17 +27,6 @@
                     </div>
 
                     @error('name')
-                        <div class="alert alert-danger" role="alert">{{ $message }}</div>
-                    @enderror
-
-                    <div class="mb-3">
-                        <label for="exampleInputName" class="form-label">slug</label>
-                        <input type="text" value="{{ old('slug') }}"
-                            class="form-control @error('slug') is-invalid @enderror" id="exampleInputName"
-                            name="slug">
-                    </div>
-
-                    @error('slug')
                         <div class="alert alert-danger" role="alert">{{ $message }}</div>
                     @enderror
 
@@ -53,21 +42,21 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="exampleInputStock" class="form-label">price</label>
-                        <input type="text" value="{{ old('price') }}"
-                            class="form-control @error('price') is-invalid @enderror" id="exampleInputStock"
-                            name="price">
+                        <label for="exampleInputStock" class="form-label">Current Price</label>
+                        <input type="text" value="{{ old('current_price') }}"
+                            class="form-control @error('current_price') is-invalid @enderror" id="exampleInputStock"
+                            name="current_price">
                     </div>
 
-                    @error('price')
+                    @error('current_price')
                         <div class="alert alert-danger" role="alert">{{ $message }}</div>
                     @enderror
 
                     <div class="mb-3">
-                        <label for="exampleInputAuthor" class="form-label">quantity</label>
-                        <input type="number" value="{{ old('quantity') }}"
-                            class="form-control @error('quantity') is-invalid @enderror" id="exampleInputAuthor"
-                            name="quantity">
+                        <label for="exampleInputAuthor" class="form-label">end Date</label>
+                        <input type="date" value="{{ old('end_date') }}"
+                            class="form-control @error('end_date') is-invalid @enderror" id="exampleInputAuthor"
+                            name="end_date">
                     </div>
 
                     @error('quantity')

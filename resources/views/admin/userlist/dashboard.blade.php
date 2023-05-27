@@ -53,7 +53,7 @@
                             <tr>
                                 <td class="p-2">{{$user->user->name}}</td>
                                 <td class="p-2">{{$user->product_name}}</td>
-                                <td class="p-2">{{$user->address}}</td>
+                                <td class="p-2">{{$user->user->address}}</td>
                                 <td class="p-2">
                                     @if (str_contains($user->payment_status, 'paid'))
                                     <div>

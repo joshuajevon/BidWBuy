@@ -167,7 +167,7 @@
             <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Live
                     Auctions</span></h1>
             @can('isAdmin')
-                <a class="text-light text-decoration-none" href="/admin/product/create-product">
+                <a class="text-light text-decoration-none" href="/admin/auction/create-auction">
                     <button type="button"
                         class="btn btn-primary p-lg-2 px-lg-3 px-2 p-1 d-flex justify-content-center align-items-center gap-2 fw-semibold">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

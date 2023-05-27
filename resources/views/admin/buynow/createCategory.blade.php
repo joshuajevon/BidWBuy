@@ -10,7 +10,9 @@
 <body>
     <x-navbar page="create-category" />
 
-    <div class="m-5">
+    <div class="py-5">
+        <div class="py-5">
+            <div class="container py-5">
         <h1 class="text-center">Create Category</h1>
         <form action="{{route('storeCategory')}}" method="POST">
             @csrf
@@ -34,7 +36,8 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-
+        </div>
+        </div>
     </div>
 
 

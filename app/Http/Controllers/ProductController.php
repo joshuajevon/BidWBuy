@@ -134,7 +134,7 @@ class ProductController extends Controller
 
         //name dari model => $request->name dari form
 
-        return redirect('/');
+        return redirect('/admin/product/');
     }
 
     public function edit($id){
@@ -164,16 +164,84 @@ class ProductController extends Controller
             'quantity' => $request->quantity,
             'image' => $fileName,
         ]);
-        return redirect('/');
+        return redirect('/admin/product/');
     }
 
     public function delete($id){
         Product::destroy($id);
-        return redirect('/');
+        return redirect('/admin/product/');
     }
 
     // admin auction
     public function adminAuctionDashboard(){
-        return view('admin.auction.dashboard');
+        $auctions = Auction::all();
+        return view('admin.auction.dashboard',compact('auctions'));
+    }
+
+    public function createAuction(){
+        $categories = Category::all();
+        return view('admin.auction.createAuction', compact('categories'));
+    }
+
+    public function storeAuction(Request $request){
+
+        // $request->validate([
+        //     'Name' => 'required|unique:books,Name,except,id',
+        //     'PublicationDate' => 'required',
+        //     'Stock' => 'required|integer|gt:5',
+        //     'Author' => 'required|min:5',
+        //     'Image' => 'required|mimes:png,jpg'
+        // ]);
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileName = $request->name.$extension;
+        $request->file('image')->storeAs('/public/image', $fileName);
+
+        Auction::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'current_price' => $request->current_price,
+            'end_date' => $request->end_date,
+            'image' => $fileName,
+            'category_id' => $request->CategoryName,
+        ]);
+
+        //name dari model => $request->name dari form
+
+        return redirect('/admin/auction/');
+    }
+
+    public function editAuction($id){
+        $auction = Auction::findOrFail($id);
+        return view('admin.auction.editAuction', compact('auction'));
+    }
+
+    public function updateAuction(Request $request, $id){
+
+        // $request->validate([
+        //     'Name' => 'required',
+        //     'PublicationDate' => 'required',
+        //     'Stock' => 'required|integer|gt:5',
+        //     'Author' => 'required|min:5',
+        //     'Image' => 'required|mimes:png,jpg'
+        // ]);
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $fileName = $request->name.$extension;
+        $request->file('image')->storeAs('/public/image', $fileName);
+
+        Auction::findOrFail($id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'current_price' => $request->current_price,
+            'end_date' => $request->end_date,
+            'image' => $fileName,
+        ]);
+        return redirect('/admin/auction/');
+    }
+
+    public function deleteAuction($id){
+        Auction::destroy($id);
+        return redirect('/admin/auction/');
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\BidController;
-
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,6 +51,12 @@ Route::middleware('isAdmin')->group(function(){
         //auction
         Route::prefix('/auction')->group(function(){
             Route::get('/', [ProductController::class, 'adminAuctionDashboard'])->name('adminAuctionDashboard');
+
+            Route::get('/create-auction', [ProductController::class, 'createAuction'])->name('createAuction');
+            Route::post('/store-auction', [ProductController::class, 'storeAuction'])->name('storeAuction');
+            Route::get('/edit-auction/{id}', [ProductController::class, 'editAuction'])->name('editAuction');
+            Route::patch('/update-auction/{id}', [ProductController::class, 'updateAuction'])->name('updateAuction');
+            Route::delete('/delete-auction/{id}', [ProductController::class, 'deleteAuction'])->name('deleteAuction');
         });
 
     });
