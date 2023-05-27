@@ -69,95 +69,78 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="5" class="text-right d-flex flex-column justify-content-start align-items-start gap-4">
+                                <td colspan="5"
+                                    class="text-right d-flex flex-column justify-content-start align-items-start gap-4">
                                     <div class="d-flex flex-column justify-content-start align-items-start gap-4">
 
-                                        <form  action="{{route('storeShop')}}" method="POST">
+                                        <form class="d-flex flex-column justify-content-start align-items-start gap-4"
+                                            action="{{ route('storeShop') }}" method="POST">
                                             @csrf
                                             @php $total = 0 @endphp
-                                            @if(session('cart'))
-                                            @foreach(session('cart') as $id => $details)
-                                            @php $total += $details['price'] * $details['quantity'] @endphp
-                                                <input hidden readonly="true" value="{{ $details['name'] }}" type="test" class="form-control" id="exampleInputEmail1" name="product_name">
-                                                <input hidden readonly="true" type="number" value="{{ $details['quantity'] }}" class="form-control" name="quantity"/>
-                                                <input hidden readonly="true" type="number" value="{{ $details['price'] * $details['quantity']  }}" class="form-control" name="price"/>
+                                            @if (session('cart'))
+                                                @foreach (session('cart') as $id => $details)
+                                                    @php $total += $details['price'] * $details['quantity'] @endphp
+                                                    <input hidden readonly="true" value="{{ $details['name'] }}"
+                                                        type="test" class="form-control" id="exampleInputEmail1"
+                                                        name="product_name">
+                                                    <input hidden readonly="true" type="number"
+                                                        value="{{ $details['quantity'] }}" class="form-control"
+                                                        name="quantity" />
+                                                    <input hidden readonly="true" type="number"
+                                                        value="{{ $details['price'] * $details['quantity'] }}"
+                                                        class="form-control" name="price" />
 
-                                                <h1 class="display-6 fw-bolder">Address</h1>
-                                                <input type="text" class="form-control" name="address"/>
+                                                    <h1 class="display-6 fw-bolder">Address</h1>
+                                                    <input type="text" class="form-control" name="address" />
 
-                                                <h1 class="display-6 fw-bolder">Choose Payment Method</h1>
-                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
-                                                <input class="form-check-input" type="radio" name="payment" value="ovo"
-                                                    id="ovo" checked>
-                                                <label class="form-check-label" for="ovo">
-                                                    <img src="{{ asset('/assets/payment/ovo.png') }}" alt="ovo">
-                                                </label>
-                                                </div>
-                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
-                                                    <input class="form-check-input" type="radio" name="payment" value="bca"
-                                                        id="bca">
-                                                    <label class="form-check-label" for="bca">
-                                                        <img src="{{ asset('/assets/payment/bca.png') }}" alt="bca">
-                                                    </label>
-                                                </div>
-                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
-                                                    <input class="form-check-input" type="radio" name="payment" value="mandiri"
-                                                        id="mandiri">
-                                                    <label class="form-check-label" for="mandiri">
-                                                        <img src="{{ asset('/assets/payment/mandiri.png') }}" alt="mandiri">
-                                                    </label>
-                                                </div>
-                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
-                                                    <input class="form-check-input" type="radio" name="payment" value="gopay"
-                                                        id="gopay">
-                                                    <label class="form-check-label" for="gopay">
-                                                        <img src="{{ asset('/assets/payment/gopay.png') }}" alt="gopay">
-                                                    </label>
-                                                </div>
+                                                    <h1 class="display-6 fw-bolder">Choose Payment Method</h1>
+                                                    <div
+                                                        class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                        <input class="form-check-input" type="radio" name="payment"
+                                                            value="ovo" id="ovo" checked>
+                                                        <label class="form-check-label" for="ovo">
+                                                            <img src="{{ asset('/assets/payment/ovo.png') }}"
+                                                                alt="ovo">
+                                                        </label>
+                                                    </div>
+                                                    <div
+                                                        class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                        <input class="form-check-input" type="radio" name="payment"
+                                                            value="bca" id="bca">
+                                                        <label class="form-check-label" for="bca">
+                                                            <img src="{{ asset('/assets/payment/bca.png') }}"
+                                                                alt="bca">
+                                                        </label>
+                                                    </div>
+                                                    <div
+                                                        class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                        <input class="form-check-input" type="radio" name="payment"
+                                                            value="mandiri" id="mandiri">
+                                                        <label class="form-check-label" for="mandiri">
+                                                            <img src="{{ asset('/assets/payment/mandiri.png') }}"
+                                                                alt="mandiri">
+                                                        </label>
+                                                    </div>
+                                                    <div
+                                                        class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                        <input class="form-check-input" type="radio" name="payment"
+                                                            value="gopay" id="gopay">
+                                                        <label class="form-check-label" for="gopay">
+                                                            <img src="{{ asset('/assets/payment/gopay.png') }}"
+                                                                alt="gopay">
+                                                        </label>
+                                                    </div>
 
-                                                <button type="submit" class="btn btn-success">Pay</button>
+                                                    <div>
+                                                        <a href="/cart" class="btn btn-danger">Cancel</a>
+                                                        <button type="submit" class="btn btn-success">Pay</button>
+                                                    </div>
                                                 @endforeach
-                                                @endif
-                                                <a href="/cart" class="btn btn-danger">Cancel</a>
+                                            @endif
+
                                         </form>
 
                                     </div>
-
-
-                                    {{-- <div>
-                                        <a href="{{ url('/') }}" class="btn btn-danger"> <i
-                                                class="fa fa-arrow-left"></i>
-                                            Cancel</a>
-                                        <a type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">Pay</a>
-                                    </div>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure want to checkout?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger"
-                                                        data-bs-dismiss="modal">No</button>
-
-                                                    <a type="button" href="{{ url('/payment  ') }}"
-                                                        class="btn btn-success">Yes</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-
-
                                 </td>
                             </tr>
                         </tfoot>
