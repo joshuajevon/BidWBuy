@@ -56,7 +56,7 @@
 
 
     {{-- All auction --}}
-    <div class="container py-5 d-flex flex-column gap-5">
+    <div class="container py-5 d-flex flex-column gap-5 min-vh-100">
         <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">Our Latest
                 Auction</span></h1>
         @can('isAdmin')
