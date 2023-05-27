@@ -16,7 +16,9 @@
 
     <div class="pt-5 min-vh-100">
         <div class="py-5">
-            <div class="py-5">
+            <div class="py-5 d-flex flex-column gap-5">
+                <h1 class="text-center fw-bolder display-4"><span class="border-bottom border-dark border-5">My Cart</span></h1>
+
                 <div class="container p-5 bg-light d-flex flex-column gap-4 rounded">
                     @if(session('success'))
                     <div class="alert alert-success">
