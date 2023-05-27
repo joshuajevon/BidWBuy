@@ -15,7 +15,7 @@ class Shop extends Model
         'quantity',
         'price',
         'address',
-        'payment_status'
+        'payment'
     ];
 
     public function user() {

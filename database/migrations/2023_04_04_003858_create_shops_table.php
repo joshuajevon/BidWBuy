@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedInteger('quantity');
             $table->unsignedBigInteger('price');
             $table->string('address');
+            $table->string('payment');
             $table->set("payment_status", ["paid", "accepted", "rejected"])->default("paid");
             $table->timestamps();
         });

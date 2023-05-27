@@ -70,43 +70,61 @@
                             </tr>
                             <tr>
                                 <td colspan="5" class="text-right d-flex flex-column justify-content-start align-items-start gap-4">
-                                    <h1 class="display-6 fw-bolder">Choose Payment Method</h1>
                                     <div class="d-flex flex-column justify-content-start align-items-start gap-4">
-                                        <div class="form-check d-flex justify-content-center align-items-center gap-4">
-                                            <input class="form-check-input" type="radio" name="radioPayment" value=""
-                                                id="ovo" checked>
-                                            <label class="form-check-label" for="ovo">
-                                                <img src="{{ asset('/assets/payment/ovo.png') }}" alt="ovo">
-                                            </label>
-                                        </div>
-                                        <div class="form-check d-flex justify-content-center align-items-center gap-4">
-                                            <input class="form-check-input" type="radio" name="radioPayment" value=""
-                                                id="bca">
-                                            <label class="form-check-label" for="bca">
-                                                <img src="{{ asset('/assets/payment/bca.png') }}" alt="bca">
-                                            </label>
-                                        </div>
-                                        <div class="form-check d-flex justify-content-center align-items-center gap-4">
-                                            <input class="form-check-input" type="radio" name="radioPayment" value=""
-                                                id="mandiri">
-                                            <label class="form-check-label" for="mandiri">
-                                                <img src="{{ asset('/assets/payment/mandiri.png') }}" alt="mandiri">
-                                            </label>
-                                        </div>
-                                        <div class="form-check d-flex justify-content-center align-items-center gap-4">
-                                            <input class="form-check-input" type="radio" name="radioPayment" value=""
-                                                id="gopay">
-                                            <label class="form-check-label" for="gopay">
-                                                <img src="{{ asset('/assets/payment/gopay.png') }}" alt="gopay">
-                                            </label>
-                                        </div>
 
+                                        <form  action="{{route('storeShop')}}" method="POST">
+                                            @csrf
+                                            @php $total = 0 @endphp
+                                            @if(session('cart'))
+                                            @foreach(session('cart') as $id => $details)
+                                            @php $total += $details['price'] * $details['quantity'] @endphp
+                                                <input hidden readonly="true" value="{{ $details['name'] }}" type="test" class="form-control" id="exampleInputEmail1" name="product_name">
+                                                <input hidden readonly="true" type="number" value="{{ $details['quantity'] }}" class="form-control" name="quantity"/>
+                                                <input hidden readonly="true" type="number" value="{{ $details['price'] * $details['quantity']  }}" class="form-control" name="price"/>
 
+                                                <h1 class="display-6 fw-bolder">Address</h1>
+                                                <input type="text" class="form-control" name="address"/>
 
+                                                <h1 class="display-6 fw-bolder">Choose Payment Method</h1>
+                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                <input class="form-check-input" type="radio" name="payment" value="ovo"
+                                                    id="ovo" checked>
+                                                <label class="form-check-label" for="ovo">
+                                                    <img src="{{ asset('/assets/payment/ovo.png') }}" alt="ovo">
+                                                </label>
+                                                </div>
+                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                    <input class="form-check-input" type="radio" name="payment" value="bca"
+                                                        id="bca">
+                                                    <label class="form-check-label" for="bca">
+                                                        <img src="{{ asset('/assets/payment/bca.png') }}" alt="bca">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                    <input class="form-check-input" type="radio" name="payment" value="mandiri"
+                                                        id="mandiri">
+                                                    <label class="form-check-label" for="mandiri">
+                                                        <img src="{{ asset('/assets/payment/mandiri.png') }}" alt="mandiri">
+                                                    </label>
+                                                </div>
+                                                <div class="form-check d-flex justify-content-left align-items-left gap-4">
+                                                    <input class="form-check-input" type="radio" name="payment" value="gopay"
+                                                        id="gopay">
+                                                    <label class="form-check-label" for="gopay">
+                                                        <img src="{{ asset('/assets/payment/gopay.png') }}" alt="gopay">
+                                                    </label>
+                                                </div>
+
+                                                <button type="submit" class="btn btn-success">Pay</button>
+                                                @endforeach
+                                                @endif
+                                                <a href="/cart" class="btn btn-danger">Cancel</a>
+                                        </form>
 
                                     </div>
 
-                                    <div>
+
+                                    {{-- <div>
                                         <a href="{{ url('/') }}" class="btn btn-danger"> <i
                                                 class="fa fa-arrow-left"></i>
                                             Cancel</a>
@@ -137,7 +155,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
+
+
                                 </td>
                             </tr>
                         </tfoot>
